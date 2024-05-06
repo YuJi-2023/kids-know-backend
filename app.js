@@ -4,10 +4,13 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+const mongoose = require("mongoose");
+
 var indexRouter = require("./routes/index");
 var signupRouter = require("./routes/signup");
 var loginRouter = require("./routes/login");
 var usersRouter = require("./routes/users");
+var todosRouter = require("./routes/todos");
 
 var app = express();
 
@@ -25,6 +28,7 @@ app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/users", usersRouter);
+app.use("/todos", todosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -42,4 +46,14 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+mongoose
+  .connect(
+    "mongodb+srv://sophiajiyu:bmu3rkmPtufhbnV1@cluster0.ia6vzw1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => {
+    console.log("conneted to MongoDB");
+  })
+  .catch(() => {
+    console.log(error);
+  });
 module.exports = app;
