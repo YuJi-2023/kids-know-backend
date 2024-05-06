@@ -11,7 +11,7 @@ var signupRouter = require("./routes/signup");
 var loginRouter = require("./routes/login");
 var usersRouter = require("./routes/users");
 var todosRouter = require("./routes/todos");
-
+require('dotenv').config();
 var app = express();
 
 // view engine setup
