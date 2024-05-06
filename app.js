@@ -48,7 +48,7 @@ app.use(function (err, req, res, next) {
 
 mongoose
   .connect(
-    "mongodb+srv://sophiajiyu:bmu3rkmPtufhbnV1@cluster0.ia6vzw1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+   process.env.MONGO_URI
   )
   .then(() => {
     console.log("conneted to MongoDB");
