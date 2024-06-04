@@ -14,4 +14,15 @@ router.post("/", async (req, res) => {
   }
 });
 
+/* get all todos */
+router.get("/", async (req, res) => {
+  try {
+    const existingTodos = await TodoModel.find({});
+    res.status(200).json(existingTodos);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;

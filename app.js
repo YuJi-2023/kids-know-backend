@@ -11,7 +11,7 @@ var signupRouter = require("./routes/signup");
 var loginRouter = require("./routes/login");
 var usersRouter = require("./routes/users");
 var todosRouter = require("./routes/todos");
-require('dotenv').config();
+require("dotenv").config();
 var app = express();
 
 // view engine setup
@@ -47,9 +47,7 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose
-  .connect(
-   process.env.MONGO_URI
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("conneted to MongoDB");
   })
